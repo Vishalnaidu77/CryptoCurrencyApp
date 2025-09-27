@@ -1,0 +1,8 @@
+export { default as Navbar } from './Navbar'
+export { default as Footer } from './Footer'
+export { default as Home } from '../Pages/Home'
+export { default as CryptoCurrencies } from '../Pages/CryptoCurrencies'
+export { default as CryptoDetails } from '../Pages/CryptoDetails'
+export { default as Exchange } from '../Pages/Exchange'
+export { default as News } from '../Pages/News'
+export { default as AppLayout} from '../AppLayout/AppLayout'
