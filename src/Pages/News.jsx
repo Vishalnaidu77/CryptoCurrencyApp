@@ -14,6 +14,9 @@ const News = ({ simplified }) => {
   console.log(cryptoNews);
   
   if (isFetching) return "Loading..."
+
+  console.log(cryptoNews.data[0].createdAt);
+  
   
 
   return (
@@ -37,7 +40,7 @@ const News = ({ simplified }) => {
               </p>
               <div className="provider-container">
                 <div>
-                  {/* <Text>{moment(news.createdAt.slice())}</Text> */}
+                  <Text>{news.createdAt}</Text>
                 </div>
               </div>
             </a>
