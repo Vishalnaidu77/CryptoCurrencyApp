@@ -11,7 +11,6 @@ import { useGetCryptosQuery } from '../Service/cryptoApi';
 const Home = () => {
 
   const { data, isFetching } = useGetCryptosQuery(10);
-  console.log(data);
 
   const gloabalStats = data?.data.stats;
   

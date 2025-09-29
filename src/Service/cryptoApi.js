@@ -5,7 +5,6 @@ const cryptoApiHeaders = {
     'x-rapidapi-host': 'coinranking1.p.rapidapi.com'
 }
 
-
 const baseUrl = 'https://coinranking1.p.rapidapi.com'
 
 const createRequest = (url) => ({ url, headers: cryptoApiHeaders})
