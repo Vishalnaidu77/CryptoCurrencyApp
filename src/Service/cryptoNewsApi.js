@@ -14,7 +14,6 @@ export const cryptoNewsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),   
   endpoints: (builder) => ({
     getCryptoNews: builder.query({
-      // yaha API ke test endpoint se sahi path lagana hoga
       query: (count) => createRequest(`/v1/coindesk?limit=${count}`)
     })
   })
