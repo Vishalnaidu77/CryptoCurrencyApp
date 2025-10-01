@@ -12,13 +12,12 @@ const { Title, Text } = Typography;
 const { Option } = Select;
 
 const CryptoDetails = () => {
-  const [timePeriod, setTimePeriod] = useState('')
+  const [timeperiod, setTimeperiod] = useState('')
   const { coinId }  = useParams()
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId)
-  const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timePeriod})
+  const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod})
   const cryptoDetails = data?.data?.coin;
-
-  console.log(cryptoDetails)
+  
 
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
@@ -38,7 +37,9 @@ const CryptoDetails = () => {
     { title: 'Circulating Supply', value: `$ ${cryptoDetails?.supply?.circulating && millify(cryptoDetails?.supply?.circulating)}`, icon: <ExclamationCircleOutlined /> },
   ];
   
-
+  if (isFetching) return "Loading..."
+  console.log(cryptoDetails);
+  
   return (
     <Col className='coin-detail-container'>
       <Col className='coin-heading-container'>
@@ -53,7 +54,7 @@ const CryptoDetails = () => {
         defaultValue="7d" 
         className='select-timeperiod' 
         placeholder="Select time period"
-        onChange={(value) => setTimePeriod(value)}
+        onChange={(value) => setTimeperiod(value)}
       >
         {time.map((date) => <Option key={date}>{date}</Option>)}
       </Select>
@@ -102,7 +103,9 @@ const CryptoDetails = () => {
           <Row className='coin-desc'>
             <Title level={3} className='coin-details-heading'>
               What is {cryptoDetails.name} ?
-              {HTMLReactParser(cryptoDetails.description)}
+              <Title level={4}>
+                {cryptoDetails.description}
+              </Title>
             </Title>
           </Row>
           <Col className='coin-links'>
