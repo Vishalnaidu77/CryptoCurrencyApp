@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
@@ -7,20 +6,15 @@ import { Col, Row, Typography } from 'antd';
 const { Title } = Typography;
 
 const LineChart = ({ coinHistory, currentPrice, coinName }) => {
-  const coinPrice = [];
-  const coinTimestamp = [];
-
-    console.log(coinHistory);
-    
-
-
-  for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
-    coinPrice.push(coinHistory?.data?.history[i].price);
+  if (!coinHistory?.data?.history) {
+    return <div style={{ padding: '20px', textAlign: 'center' }}>No chart data available</div>;
   }
 
-  for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
-    coinTimestamp.push(new Date(coinHistory?.data?.history[i].timestamp).toLocaleDateString());
-  }
+  // Sort history by timestamp ascending
+  const sortedHistory = [...coinHistory.data.history].sort((a, b) => a.timestamp - b.timestamp);
+  const coinPrice = sortedHistory.map((item) => item.price);
+  const coinTimestamp = sortedHistory.map((item) => new Date(item.timestamp * 1000).toLocaleDateString());
+
   const data = {
     labels: coinTimestamp,
     datasets: [
@@ -37,10 +31,10 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
   const options = {
     scales: {
       yAxes: {
-          ticks: {
-            beginAtZero: true,
-          },
+        ticks: {
+          beginAtZero: true,
         },
+      },
     },
   };
 
