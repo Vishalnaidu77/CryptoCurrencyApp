@@ -30,7 +30,7 @@ const Navbar = () => {
   return (
     <div className='nav-container'>
         <div className="logo-container">
-            <Avatar src={"../assets/cryptocurrency.png"}/>
+            <Avatar src="https://i.ibb.co/Z11pcGG/cryptocurrency.png"/>
             <Typography.Title level={2} className='logo'>
                 <Link to="/">
                   CryptoVerse

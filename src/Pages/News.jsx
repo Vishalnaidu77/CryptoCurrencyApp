@@ -2,6 +2,7 @@ import React from 'react'
 import { Select, Typography, Row, Col, Avatar, Card } from 'antd'
 import moment from 'moment'
 import { useGetCryptoNewsQuery } from '../Service/cryptoNewsApi'
+import Loader from '../Components/Loader';
 
 const { Text, Title } = Typography;
 const { Option } = Select
@@ -13,7 +14,7 @@ const News = ({ simplified }) => {
   const { data: cryptoNews, isFetching } = useGetCryptoNewsQuery(count)
 
   
-  if (isFetching) return "Loading..."
+  if (isFetching) return <Loader />
 
   return (
     <Row gutter={[24, 24]}>

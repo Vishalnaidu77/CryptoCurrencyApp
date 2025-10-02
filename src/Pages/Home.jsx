@@ -7,6 +7,7 @@ import { CryptoCurrencies, News } from '../Components'
 const { Title } = Typography;
 
 import { useGetCryptosQuery } from '../Service/cryptoApi';
+import Loader from '../Components/Loader'
 
 const Home = () => {
 
@@ -14,9 +15,8 @@ const Home = () => {
 
   const gloabalStats = data?.data.stats;
   
-  if (isFetching) return 'Loading...'
+  if (isFetching) return <Loader />
   
-
   return (
     <>
       <Title level={2} className='heading'>Global Crypto Stats</Title>

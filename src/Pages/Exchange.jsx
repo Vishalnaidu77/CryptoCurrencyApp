@@ -1,15 +1,17 @@
 import React from 'react'
-
-import { useGetExchagesQuery  } from '../Service/cryptoApi'
+import { useGetExchangeDataQuery } from '../Service/cryptoExchangeApi'
 
 const Exchange = () => {
-
-  const { data } = useGetExchagesQuery();
-  console.log(data);
+  // Fetch data for a specific exchange (e.g., 'binance')
+  const { data, error, isFetching } = useGetExchangeDataQuery();
 
   return (
-    <div>Exchange</div>
-  )
+    <div>
+      <h1 className='text-3xl font-bold'>
+        This page's work is not done.
+      </h1>
+    </div>
+  );
 }
 
-export default Exchange
+export default Exchange;  
